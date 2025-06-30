@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:web_app/core/constants/app_images.dart';
+import 'package:web_app/core/constants/app_strings.dart';
 import '../../../../../core/constants/app_colors.dart';
-import '../../../../core/widgets/customButton.dart';
-import '../../../home/presentation/pages/home.dart';
+import '../../../../../core/constants/app_images.dart';
+import '../../../../../core/widgets/customButton.dart';
 import '../cubit/branch_cubit.dart';
 
-class BranchSelectionPage extends StatelessWidget {
+class BranchSelectionPage extends StatefulWidget {
   const BranchSelectionPage({Key? key}) : super(key: key);
 
   @override
+  State<BranchSelectionPage> createState() => _BranchSelectionPageState();
+}
+
+class _BranchSelectionPageState extends State<BranchSelectionPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<BranchCubit>().fetchBranches();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final langCode = Localizations.localeOf(context).languageCode;
+
     return Scaffold(
       backgroundColor: AppColors.smooky,
       body: SingleChildScrollView(
@@ -20,15 +33,10 @@ class BranchSelectionPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
-                child: Image.asset(
-                  AppImages.logo,
-                  width: 300,
-                ),
-              ),
+              Center(child: Image.asset(AppImages.logo, width: 300)),
               const SizedBox(height: 50),
               Text(
-                'اختيار فرع المطعم',
+                AppStrings.chooseBranch(context),
                 style: TextStyle(
                   color: AppColors.white,
                   fontSize: 20,
@@ -36,26 +44,34 @@ class BranchSelectionPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              CustomButton(
-                borderRadius: 20,
-                width: 150,
-                text: 'ميزيتلي',
-                onPressed: () {
-                  context.read<BranchCubit>().selectBranch('ميزيتلي');
-                  context.go('/home');
+              BlocBuilder<BranchCubit, BranchState>(
+                builder: (context, state) {
+                  if (state is BranchLoaded) {
+                    return Column(
+                      children: state.branches.map((branch) {
+                        return Column(
+                          children: [
+                            CustomButton(
+                              borderRadius: 20,
+                              width: 150,
+                              text: branch.getName(langCode),
+                              onPressed: () {
+                                context.read<BranchCubit>().selectBranch(branch);
+                                context.go('/home');
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        );
+                      }).toList(),
+                    );
+                  } else if (state is BranchInitial) {
+                    return const CircularProgressIndicator();
+                  } else {
+                    return Text(AppStrings.failedDownloadBranch(context));
+                  }
                 },
               ),
-              const SizedBox(height: 20),
-              CustomButton(
-                borderRadius: 20,
-                width: 150,
-                text: 'البلدية',
-                onPressed: () {
-                  context.read<BranchCubit>().selectBranch('البلدية');
-                  context.go('/home');
-                },
-              ),
-        
             ],
           ),
         ),

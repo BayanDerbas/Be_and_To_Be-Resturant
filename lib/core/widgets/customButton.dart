@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
     this.width = double.infinity,
     this.buttonColor,
     this.textColor,
-    this.borderRadius = 12,
+    this.borderRadius = 2,
   }) : super(key: key);
 
   @override
