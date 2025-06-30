@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:web_app/core/constants/app_strings.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_images.dart';
 import '../../../../../core/widgets/customButton.dart';
@@ -36,7 +35,7 @@ class _BranchSelectionPageState extends State<BranchSelectionPage> {
               Center(child: Image.asset(AppImages.logo, width: 300)),
               const SizedBox(height: 50),
               Text(
-                AppStrings.chooseBranch(context),
+                "اختيار فرع",
                 style: TextStyle(
                   color: AppColors.white,
                   fontSize: 20,
@@ -68,7 +67,7 @@ class _BranchSelectionPageState extends State<BranchSelectionPage> {
                   } else if (state is BranchInitial) {
                     return const CircularProgressIndicator();
                   } else {
-                    return Text(AppStrings.failedDownloadBranch(context));
+                    return Text("فشل تحميل الافرع");
                   }
                 },
               ),

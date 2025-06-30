@@ -12,7 +12,6 @@ import 'features/cart/presentation/cubit/cart_cubit.dart';
 import 'features/home/presentation/cubit/locale/locale_cubit.dart';
 import 'features/home/presentation/cubit/products/products_cubit.dart';
 import 'features/home/presentation/cubit/typesProduct/types_product_cubit.dart';
-import 'l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,14 +41,6 @@ class MyApp extends StatelessWidget {
               builder: (context, locale) {
                 final lang = locale.languageCode;
                 return MaterialApp.router(
-                  localizationsDelegates: const [
-                    AppLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                  ],
-                  supportedLocales: AppLocalizations.supportedLocales,
-                  locale: locale,
                   theme: AppTheme.lightTheme,
                   routerConfig: AppRouter.router,
                   debugShowCheckedModeBanner: false,

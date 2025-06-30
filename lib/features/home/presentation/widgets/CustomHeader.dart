@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:web_app/core/constants/app_strings.dart';
-import 'package:web_app/features/home/presentation/widgets/CustomDrawer.dart';
 import '../../../../config/ResponsiveUI/responsiveConfig.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_images.dart';
@@ -81,7 +79,7 @@ class CustomHeader extends StatelessWidget {
                         TextButton(
                           onPressed: onAboutTap,
                           child: Text(
-                            AppStrings.about(context),
+                            "حول",
                             style: TextStyle(
                               color: AppColors.white,
                               fontWeight: FontWeight.bold,

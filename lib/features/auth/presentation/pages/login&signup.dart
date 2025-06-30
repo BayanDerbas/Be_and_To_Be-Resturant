@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:web_app/core/constants/app_strings.dart';
 import '../../../../config/ResponsiveUI/responsiveConfig.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_images.dart';
@@ -66,7 +65,7 @@ class Login_SignupPage extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    AppStrings.login(context),
+                                    "تسجيل الدخول",
                                     style: TextStyle(
                                       color: isLogin ? AppColors.black1 : AppColors.white,
                                       fontWeight: FontWeight.bold,
@@ -86,7 +85,7 @@ class Login_SignupPage extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    AppStrings.signup(context),
+                                    "إنشاء حساب",
                                     style: TextStyle(
                                       color: isLogin ? AppColors.white : AppColors.black1,
                                       fontWeight: FontWeight.bold,
@@ -103,7 +102,7 @@ class Login_SignupPage extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              AppStrings.fullName(context),
+                              "الاسم الكامل",
                               style: TextStyle(
                                 color: AppColors.white,
                                 fontSize: 16,
@@ -113,7 +112,7 @@ class Login_SignupPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           CustomTextField(
-                            hintText: AppStrings.nameHint(context),
+                            hintText:"ادخل اسمك الكامل",
                             prefixIcon: Icons.person,
                             controller: nameController,
                           ),
@@ -122,7 +121,7 @@ class Login_SignupPage extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            AppStrings.phoneNumber(context),
+                            "رقم الهاتف",
                             style: TextStyle(
                               color: AppColors.white,
                               fontSize: 16,
@@ -132,7 +131,7 @@ class Login_SignupPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         CustomTextField(
-                          hintText: AppStrings.phoneHint(context),
+                          hintText: "أدخل رقمك",
                           prefixIcon: Icons.phone,
                           controller: phoneController,
                           keyboardType: TextInputType.phone,
@@ -141,7 +140,7 @@ class Login_SignupPage extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            AppStrings.password(context),
+                            "كلمة السر",
                             style: TextStyle(
                               color: AppColors.white,
                               fontSize: 16,
@@ -154,7 +153,7 @@ class Login_SignupPage extends StatelessWidget {
                           valueListenable: _obscurePasswordNotifier,
                           builder: (context, obscureText, child) {
                             return CustomTextField(
-                              hintText: AppStrings.passwordHint(context),
+                              hintText: "••••••••",
                               prefixIcon: Icons.lock,
                               controller: passwordController,
                               obscureText: obscureText,
@@ -175,7 +174,7 @@ class Login_SignupPage extends StatelessWidget {
                           width: containerWidth,
                           height: 45,
                           child: CustomButton(
-                            text: isLogin ? AppStrings.login(context) : AppStrings.signup(context),
+                            text: isLogin ? "تسجيل الدخول" : "إنشاء حساب",
                             onPressed: () {
                               Navigator.of(context).pop();
                               context.go('/branch_selection');
