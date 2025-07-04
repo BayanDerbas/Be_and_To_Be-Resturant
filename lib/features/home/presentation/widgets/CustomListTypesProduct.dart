@@ -5,7 +5,7 @@ import '../../../../config/ResponsiveUI/responsiveConfig.dart';
 import '../../../order/presentation/pages/order.dart';
 
 class CustomListTypesProductList extends StatelessWidget {
-  final List<Map<String, String>> types;
+  final List<Map<String, dynamic>> types;
   final double contentWidth;
 
   const CustomListTypesProductList({
@@ -52,7 +52,7 @@ class CustomListTypesProductList extends StatelessWidget {
                         name: type['name'] ?? '',
                         image: type['image'] ?? '',
                         price: price,
-                        types: ['صغيرة', 'وسط', 'كبيرة'],
+                        types: [type],
                       ),
                     ),
                   );
@@ -97,7 +97,7 @@ class CustomListTypesProductList extends StatelessWidget {
                         name: type['name'] ?? '',
                         image: type['image'] ?? '',
                         price: price,
-                        types: ['صغيرة', 'وسط', 'كبيرة'],
+                        types: [type],
                       ),
                     ),
                   );
@@ -129,8 +129,6 @@ class CustomListTypesProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveConfig.of(context);
-
     double itemHeight = 85;
 
     return Padding(

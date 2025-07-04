@@ -44,7 +44,7 @@ class AppRouter {
             name: args?['name'] ?? '',
             image: args?['image'] ?? '',
             price: args?['price'] ?? 0,
-            types: args?['types'] ?? const ['صغيرة', 'وسط', 'كبيرة'],
+            types: args?['types'] ?? const [],
           );
         },
       ),

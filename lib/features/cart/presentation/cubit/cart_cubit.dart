@@ -5,7 +5,25 @@ import '../widgets/CustomCart.dart';
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
-  CartCubit() : super(const CartState(items: [], totalPrice: 0, minOrderPrice: 50));
+
+  CartCubit()
+      : super(const CartState(
+    items: [],
+    totalPrice: 0,
+    minOrderPrice: 50,
+  ));
+
+  void selectCoupon(String coupon) {
+    emit(state.copyWith(selectedCoupon: coupon));
+  }
+
+  void updateTableNumber(String number) {
+    emit(state.copyWith(tableNumber: number));
+  }
+
+  void updateNote(String note) {
+    emit(state.copyWith(note: note));
+  }
 
   void addItem(CartItem item) {
     final existingIndex = state.items.indexWhere((i) =>

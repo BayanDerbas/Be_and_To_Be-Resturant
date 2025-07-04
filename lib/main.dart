@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:web_app/features/home/presentation/cubit/header/header_cubit.dart';
 import 'package:web_app/features/home/presentation/cubit/urlLauncher/url_launcher_cubit.dart';
 import 'config/ResponsiveUI/responsiveConfig.dart';

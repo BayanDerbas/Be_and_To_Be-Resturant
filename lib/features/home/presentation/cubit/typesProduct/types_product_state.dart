@@ -9,12 +9,12 @@ abstract class ProductTypesState extends Equatable {
 class ProductTypesInitial extends ProductTypesState {}
 
 class ProductTypesLoaded extends ProductTypesState {
-  final List<Map<String, String>> types;
+  final List<Map<String, dynamic>> types;
 
   const ProductTypesLoaded({required this.types});
 
   @override
-  List<Object?> get props => [types];
+  List<Object> get props => [types];
 }
 
 class ProductTypesFailure extends ProductTypesState {
